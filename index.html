@@ -3,7 +3,26 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>EKOPIA Token Forge</title>
+    <title>EKOPIA Token Forge | Creador de Tokens ERC-20</title>
+    
+    <!-- SEO & Metadata for Vercel Deployment -->
+    <meta name="description" content="Despliega tu propio token ERC-20 en la red EKOPIA de manera segura, sin código y compatible con móviles. Herramienta verificada para creadores.">
+    <meta name="keywords" content="Ekopia, Token, ERC20, Creator, Generator, Blockchain, Crypto, Deployer">
+    <meta name="author" content="EKOPIA Community">
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="EKOPIA Token Forge">
+    <meta property="og:description" content="Crea tu criptomoneda en la red EKOPIA en segundos. Seguro, rápido y sin tocar código.">
+    <meta property="og:site_name" content="EKOPIA Token Forge">
+    <!-- Generates a nice preview on Discord/Telegram/Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="EKOPIA Token Forge">
+    <meta name="twitter:description" content="Crea tu criptomoneda en la red EKOPIA en segundos.">
+    
+    <!-- Favicon (Data URI for performance/portability) -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
@@ -19,6 +38,15 @@
                 text: '#e2e8f0',
                 muted: '#94a3b8'
               }
+            },
+            animation: {
+              fadeIn: 'fadeIn 0.5s ease-out',
+            },
+            keyframes: {
+              fadeIn: {
+                '0%': { opacity: '0', transform: 'translateY(10px)' },
+                '100%': { opacity: '1', transform: 'translateY(0)' },
+              }
             }
           }
         }
@@ -28,6 +56,7 @@
       body {
         background-color: #050505;
         color: #e2e8f0;
+        -webkit-font-smoothing: antialiased;
       }
       /* Custom scrollbar */
       ::-webkit-scrollbar {

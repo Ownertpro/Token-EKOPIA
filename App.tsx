@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { ethers } from 'ethers';
-import { Wallet, CheckCircle2, AlertCircle, Terminal, Layers, ArrowRight, BookOpen, Smartphone, Globe, MessageCircle, Twitter, Image as ImageIcon, Copy } from 'lucide-react';
+import { Wallet, CheckCircle2, AlertCircle, Terminal, Layers, ArrowRight, BookOpen, Smartphone, Globe, MessageCircle, Twitter, Image as ImageIcon, Copy, ShieldCheck } from 'lucide-react';
 import { ABI, DEFAULT_BYTECODE, SOLIDITY_SOURCE } from './constants';
 import { DeployerCard } from './components/DeployerCard';
 import { InfoPanel } from './components/InfoPanel';
@@ -189,16 +189,16 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-ekopia-dark font-sans text-ekopia-text selection:bg-ekopia-primary selection:text-white">
+    <div className="min-h-screen bg-ekopia-dark font-sans text-ekopia-text selection:bg-ekopia-primary selection:text-white flex flex-col">
       
       {/* Header */}
       <header className="border-b border-ekopia-border bg-ekopia-card/50 backdrop-blur-md sticky top-0 z-50">
         <div className="max-w-5xl mx-auto px-6 h-20 flex items-center justify-between">
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 cursor-pointer" onClick={() => setViewMode('app')}>
             <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-ekopia-primary to-purple-600 flex items-center justify-center shadow-lg shadow-ekopia-primary/20">
               <Layers className="text-white w-6 h-6" />
             </div>
-            <h1 className="text-2xl font-bold tracking-tight text-white">
+            <h1 className="text-2xl font-bold tracking-tight text-white hidden sm:block">
               EKOPIA <span className="text-ekopia-primary">Forge</span>
             </h1>
           </div>
@@ -224,7 +224,7 @@ export default function App() {
                 onClick={connectWallet}
                 className="bg-ekopia-primary hover:bg-blue-600 text-white px-5 py-2.5 rounded-lg font-medium transition-all shadow-lg shadow-blue-900/20 flex items-center gap-2"
               >
-                <Wallet className="w-4 h-4" /> Conectar Wallet
+                <Wallet className="w-4 h-4" /> <span className="hidden sm:inline">Conectar Wallet</span>
               </button>
              ) : (
                <div className="flex items-center gap-3 bg-ekopia-card border border-ekopia-border px-4 py-2 rounded-lg">
@@ -242,7 +242,7 @@ export default function App() {
                       onClick={switchToEkopia}
                       className="ml-2 text-xs bg-yellow-500/10 text-yellow-500 px-2 py-1 rounded hover:bg-yellow-500/20"
                     >
-                      Cambiar Red
+                      Cambiar
                     </button>
                  )}
                </div>
@@ -252,10 +252,10 @@ export default function App() {
       </header>
 
       {/* Main Content */}
-      <main className="max-w-5xl mx-auto px-6 py-10">
+      <main className="max-w-5xl mx-auto px-6 py-10 flex-grow w-full">
         
         {viewMode === 'app' ? (
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 animate-fadeIn">
             {/* Left Column: Form */}
             <div className="lg:col-span-7 space-y-8">
               <div className="space-y-2">
@@ -275,7 +275,7 @@ export default function App() {
 
               {/* Feedback Area */}
               {feedback && (
-                <div className={`p-4 rounded-lg border flex items-start gap-3 ${
+                <div className={`p-4 rounded-lg border flex items-start gap-3 animate-fadeIn ${
                   feedback.type === 'error' 
                     ? 'bg-red-950/30 border-red-900 text-red-200' 
                     : feedback.type === 'success'
@@ -303,7 +303,7 @@ export default function App() {
 
               {/* Success Result & Project Info */}
               {deployedToken && (
-                <div className="space-y-6">
+                <div className="space-y-6 animate-fadeIn">
                   {/* Contract Address Card */}
                   <div className="bg-gradient-to-r from-ekopia-card to-[#1a1a1a] border border-ekopia-accent/50 rounded-xl p-6 shadow-[0_0_30px_rgba(0,255,98,0.1)]">
                     <h3 className="text-ekopia-accent font-bold text-lg mb-4 flex items-center gap-2">
@@ -424,6 +424,17 @@ export default function App() {
           <HelpGuide onBack={() => setViewMode('app')} />
         )}
       </main>
+
+      {/* Footer for Production/Vercel */}
+      <footer className="border-t border-ekopia-border bg-black/50 py-8 mt-auto">
+        <div className="max-w-5xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-ekopia-muted">
+          <div className="flex items-center gap-2">
+            <ShieldCheck className="w-4 h-4 text-ekopia-primary" />
+            <span>Secure DApp • Client-Side Only</span>
+          </div>
+          <p>© {new Date().getFullYear()} EKOPIA Token Forge. Ready for Mainnet.</p>
+        </div>
+      </footer>
     </div>
   );
 }
