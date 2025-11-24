@@ -1,0 +1,5 @@
+{
+  "name": "EKOPIA Token Forge",
+  "description": "A professional ERC-20 token deployer for the EKOPIA blockchain. Fixes deployment issues by using ethers.js and providing strict bytecode validation.",
+  "requestFramePermissions": []
+}
