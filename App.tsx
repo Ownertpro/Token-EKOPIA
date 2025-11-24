@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { ethers } from 'ethers';
 import { Wallet, CheckCircle2, AlertCircle, Terminal, Layers, ArrowRight, BookOpen, Smartphone, Globe, MessageCircle, Twitter, Image as ImageIcon, Copy, ShieldCheck } from 'lucide-react';
 import { ABI, DEFAULT_BYTECODE, SOLIDITY_SOURCE } from './constants';
